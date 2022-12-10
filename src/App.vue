@@ -1,6 +1,7 @@
 <template>
-	<div id="app">
-		<DropZone class="drop-area" @files-dropped="addFiles" #default="{ dropZoneActive }">
+  <div id="app">
+    <BlobList />
+    <!--		<DropZone class="drop-area" @files-dropped="addFiles" #default="{ dropZoneActive }">
 			<label for="file-input">
 				<span v-if="dropZoneActive">
 					<span>Drop Them Here</span>
@@ -18,28 +19,33 @@
 			<ul class="image-list" v-show="files.length">
 				<FilePreview v-for="file of files" :key="file.id" :file="file" tag="li" @remove="removeFile" />
 			</ul>
-		</DropZone>
+		</DropZone>-->
+    <!--
 		<button @click.prevent="uploadFiles(files)" class="upload-button">Upload</button>
-	</div>
+-->
+  </div>
 </template>
 
 <script setup>
 // Components
-import DropZone from './components/DropZone.vue'
-import FilePreview from './components/FilePreview.vue'
+import DropZone from "./components/DropZone.vue";
+import FilePreview from "./components/FilePreview.vue";
+import BlobList from "./components/BlobList.vue";
 
 // File Management
-import useFileList from './compositions/file-list'
-const { files, addFiles, removeFile } = useFileList()
+import useFileList from "./compositions/file-list";
+const { files, addFiles, removeFile } = useFileList();
 
 function onInputChange(e) {
-	addFiles(e.target.files)
-	e.target.value = null // reset so that selecting the same file again will still cause it to fire this change
+  addFiles(e.target.files);
+  e.target.value = null; // reset so that selecting the same file again will still cause it to fire this change
 }
 
 // Uploader
-import createUploader from './compositions/file-uploader'
-const { uploadFiles } = createUploader('YOUR URL HERE')
+import createUploader from "./compositions/file-uploader";
+const { uploadFiles } = createUploader(
+  "http://localhost:8080/multiupload/files"
+);
 </script>
 
 <style lang="stylus">
