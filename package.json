@@ -15,7 +15,7 @@
 		"@fortawesome/free-solid-svg-icons": "^6.2.1",
 		"@fortawesome/vue-fontawesome": "~3.0.2",
 		"@jobinsjp/vue3-datatable": "^1.0.15",
-		"axios": "^1.2.1",
+		"axios": "^1.6.0",
 		"daisyui": "^2.43.0",
 		"flowbite": "^1.5.5",
 		"vue": "^3.2.45",
